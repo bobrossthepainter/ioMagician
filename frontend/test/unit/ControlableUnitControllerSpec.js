@@ -11,14 +11,6 @@ describe('ControlableUnit', function () {
         //Getting reference of the mocked service
         var mockcontrolableUnitService;
 
-        //Getting reference of the mocked service
-        beforeEach(inject(function (controlableUnitService, $rootScope, $controller) {
-            mockcontrolableUnitService = controlableUnitService;
-
-            scope = $rootScope.$new();
-            ctrl = $controller('ControlableUnitController', {$scope: scope});
-        }));
-
         beforeEach(module(function ($provide) {
             $provide.service('controlableUnitService', function () {
                 this.loadAllControlableUnits = jasmine.createSpy('loadAllControlableUnits').andCallFake(function (cb) {
@@ -27,9 +19,21 @@ describe('ControlableUnit', function () {
             });
         }));
 
+        //Getting reference of the mocked service
+        beforeEach(inject(function (controlableUnitService, $controller) {
+            mockcontrolableUnitService = controlableUnitService;
+
+            ctrl = $controller('ControlableUnitController');
+        }));
+
+
+
 
         it('should create "units" model with 2 units', function () {
-            expect(scope.units).toEqual([{"it is": "not"}, {"completely": "working"}]);
+            expect(ctrl.units).toEqual([{"it is": "not"}, {"completely": "working"}]);
+        });
+        it('should return yolo', function () {
+            expect(ctrl.lala).toEqual("yolo");
         });
     });
 

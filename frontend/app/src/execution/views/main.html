@@ -1,0 +1,37 @@
+<div>
+    <md-content class="md-padding" ng-controller="ExecutionMainController as exController">
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Aktiv">
+                <md-content class="md-padding">
+                    <h1 class="md-display-2">Aktiv</h1>
+                </md-content>
+            </md-tab>
+            <md-tab label="Geplant">
+                <md-content class="md-padding">
+                    <h1 class="md-display-2">Geplant</h1>
+                </md-content>
+            </md-tab>
+            <md-tab label="Rest">
+                <md-content class="md-padding">
+                    <h1 class="md-display-2">Rest</h1>
+
+                    <div ng-repeat="action in exController.actions">
+                        <md-card>
+                            <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+                            <md-card-content>
+                                <h2 class="md-title">{{ action.name }}</h2>
+
+                                <p></p>
+                            </md-card-content>
+                            <div class="md-actions" layout="row" layout-align="end center">
+                                <md-button>Action 1</md-button>
+                                <md-button>Action 2</md-button>
+                            </div>
+                        </md-card>
+                        <br/>
+                    </div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>

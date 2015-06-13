@@ -3,7 +3,7 @@
     angular
         .module('sidebar')
         .controller('SideBarController', [
-            '$mdSidenav', '$mdBottomSheet', '$log', '$q',
+            '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$location',
             SideBarController
         ]);
 
@@ -14,19 +14,19 @@
      * @param avatarsService
      * @constructor
      */
-    function SideBarController($mdSidenav, $mdBottomSheet, $log, $q) {
+    function SideBarController($mdSidenav, $mdBottomSheet, $log, $q, $location) {
         var self = this;
 
         self.title = "Navi";
         self.selected = null;
         self.items = [{
-            "name": "Controlable Units",
-            "target": "todo",
-            "avatar" : "svg-1"
-        }, {
-            "name": "Port Aggregation",
-            "target": "todo",
+            "name": "Aktionen",
+            "target": "execution",
             "avatar" : "svg-2"
+        }, {
+            "name": "Controlable Units",
+            "target": "controlableunits",
+            "avatar" : "svg-1"
         }];
 
         self.selectItem = selectItem;
@@ -57,6 +57,7 @@
         function selectItem(item) {
             self.selected = angular.isNumber(item) ? $scope.items[item] : item;
             self.toggleList();
+            $location.path(item.target);
         }
 
         /**

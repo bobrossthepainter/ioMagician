@@ -1,12 +1,26 @@
 (function () {
     'use strict';
 
-    angular.module('configuration', [])
+    angular.module('ioMagicianCommon', ['ngMdIcons'])
         .service('configurationService', ['$http', ConfigurationService])
         .constant('config', {
             'backend': 'http://localhost:1337',
             'version': 0.1
-        });
+        }).filter('json', JSONFilter);
+
+
+
+
+
+
+    function JSONFilter(){
+        return function (input) {
+            if (!input) {
+                return "error";
+            }
+            return JSON.stringify(value, null, 2);
+        };
+    }
 
     /**
      * Users DataService

@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('controlableUnits')
-        .service('controlableUnitService', ['config', '$http', ControlableUnitService]);
+    angular.module('ioMagicianCore')
+        .service('controlableUnitService', ['config', '$http', 'ControlableUnit', ControlableUnitService]);
 
 
     /**
@@ -13,7 +13,7 @@
      * @returns {{loadAll: Function}}
      * @constructor
      */
-    function ControlableUnitService(config, $http) {
+    function ControlableUnitService(config, $http, ControlableUnit) {
 
         this.loadAllControlableUnits = function (cb) {
             var backend = config.backend;
@@ -26,6 +26,16 @@
                     cb();
                 });
         };
+
+        var propertyObject = {};
+
+        this.getPropertyObject = function() {
+            return propertyObject;
+        }
+
+
+
+
     }
 
 })();

@@ -1,9 +1,10 @@
 (function () {
+    'use strict';
 
     angular
-        .module('controlableUnits')
+        .module('ioMagicianCore')
         .controller('ControlableUnitController', [
-            'controlableUnitService', '$mdSidenav', '$mdBottomSheet', '$log', '$q',
+            'controlableUnitService', 'ControlableUnit', '$log', '$location',
             ControlableUnitController
         ]);
 
@@ -14,24 +15,34 @@
      * @param avatarsService
      * @constructor
      */
-    function ControlableUnitController(controlableUnitService, $mdSidenav, $mdBottomSheet, $log, $q) {
+    function ControlableUnitController(controlableUnitService, ControlableUnit, $log, $location) {
         var self = this;
         self.lala = 'yolo';
-        self.units = [];
+        //self.units = [];
+        self.units = [{"id" : "ads"}];
 
-        // Load all registered users
+        // Load all units
 
-        controlableUnitService
-            .loadAllControlableUnits(function(data){
-                if(data){
-                    self.units = data;
-                } else {
-                    self.units = [ ];
-                }
-            });
+        //controlableUnitService
+        //    .loadAllControlableUnits(function(data){
+        //        if(data){
+        //            self.units = data;
+        //        } else {
+        //            self.units = [ ];
+        //        }
+        //    });
+
+        ControlableUnit.query(function (data){
+            self.units = data;
+        });
+
+        self.go = function ( unit ) {
+            controlableUnitService.getPropertyObject().lastSelectedUnit = unit;
+            $location.path( '/controlableunits/' + unit.id );
+        };
 
         //self.units = ['a' , 'b'];
-        $log.warn('items: ' + JSON.stringify(self.units));
+        //$log.warn('items: ' + JSON.stringify(self.units));
     };
 
 })();
