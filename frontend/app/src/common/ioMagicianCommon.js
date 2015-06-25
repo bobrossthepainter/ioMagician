@@ -1,12 +1,16 @@
 (function () {
     'use strict';
 
-    angular.module('ioMagicianCommon', ['ngMdIcons'])
+    angular.module('ioMagicianCommon', ['ngMdIcons', 'socket.io'])
         .service('configurationService', ['$http', ConfigurationService])
         .constant('config', {
             'backend': 'http://localhost:1337',
             'version': 0.1
-        }).filter('json', JSONFilter);
+        })
+        .config(['$socketProvider', 'config', function ($socketProvider, config) {
+            $socketProvider.setConnectionUrl(config.backend);
+            $socketProvider.activateSailsSupport();
+        }]).filter('json', JSONFilter);
 
 
 

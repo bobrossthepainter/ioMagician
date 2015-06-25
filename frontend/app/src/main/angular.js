@@ -32,16 +32,13 @@ angular
 
         $routeProvider.
             when('/controlableunits', {
-                templateUrl: 'src/controlable_unit/view/controlableunit_list.html',
-                controller: 'ControlableUnitController'
+                templateUrl: 'src/controlable_unit/view/controlableunit_list.html'
             }).
             when('/controlableunits/:unitId', {
-                templateUrl: 'src/controlable_unit/view/unit.html',
-                controller: 'UnitDetailController'
+                templateUrl: 'src/controlable_unit/view/unit.html'
             }).
             when('/execution', {
-                templateUrl: 'src/execution/views/main.html',
-                controller: 'ExecutionMainController'
+                templateUrl: 'src/execution/views/main.html'
             }).
             otherwise({
                 redirectTo: '/controlableunits'
