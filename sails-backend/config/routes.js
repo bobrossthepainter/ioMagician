@@ -39,6 +39,8 @@ module.exports.routes = {
 
   'GET /action/execute/:id' : 'ActionController.execute',
 
+  'GET /port/execute/:id' : 'PortController.execute',
+
   'GET /portaggregation/getAll' : 'PortAggregation.getAll',
 
   'GET /portaggregation/get/:id' : 'PortAggregation.get',

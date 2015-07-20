@@ -1,0 +1,7 @@
+// status update from client --> mqtt: #unitAddress/#portAddress/status
+
+  {
+    "unitAddress":"...",
+    "portAddress":"...",
+    "value":"..."
+  }

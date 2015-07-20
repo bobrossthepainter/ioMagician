@@ -1,5 +1,5 @@
-angular.module('ioMagicianExecution').factory("ExecutionCommand", function ($resource, config) {
-    return $resource(config.backend + "/executioncommand/:id", null,
+angular.module('ioMagicianService').factory("Port", function ($resource, config) {
+    return $resource(config.backend + "/port/:id", null,
         {
             //articleId: '@id',
             'update': {

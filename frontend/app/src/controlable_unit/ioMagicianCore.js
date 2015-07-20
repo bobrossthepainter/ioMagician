@@ -2,7 +2,7 @@
     'use strict';
 
     // Prepare the 'sideBar' module for subsequent registration of controllers and delegates
-    angular.module('ioMagicianCore', ['ngMaterial', 'ioMagicianCommon', 'ngResource'])
+    angular.module('ioMagicianCore', ['ngMaterial', 'ioMagicianCommon', 'ioMagicianService'])
         .filter('controlableUnitIcon', function () {
             return function (input) {
                 var def = "./assets/png/default.png";

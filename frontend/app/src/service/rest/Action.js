@@ -1,5 +1,5 @@
-angular.module('ioMagicianCore').factory("ControlableUnit", function ($resource, config) {
-    return $resource(config.backend + "/controlableunit/:id", null,
+angular.module('ioMagicianService').factory("Action", function ($resource, config) {
+    return $resource(config.backend + "/action/:id", null,
         {
             //articleId: '@id',
             'update': {

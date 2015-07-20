@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('ioMagicianExecution', ['ngMaterial', 'ioMagicianCommon', 'ioMagicianCore', 'ngResource']);
+    angular.module('ioMagicianExecution', ['ngMaterial', 'ioMagicianService', 'ioMagicianCommon', 'ioMagicianCore']);
 
 
 })();

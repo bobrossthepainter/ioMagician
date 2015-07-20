@@ -16,7 +16,7 @@
 //});
 
 angular
-    .module('ioMagicianApp', ['ngRoute', 'ngMaterial', 'ioMagicianCommon', 'ioMagicianCore', 'ioMagicianExecution', 'sidebar'])
+    .module('ioMagicianApp', ['ngRoute', 'ngMaterial', 'ioMagicianService', 'ioMagicianCommon', 'ioMagicianCore', 'ioMagicianExecution', 'sidebar'])
     .config(function ($mdThemingProvider, $mdIconProvider, $routeProvider) {
         $mdIconProvider
             .defaultIconSet("./assets/svg/avatars.svg", 128)

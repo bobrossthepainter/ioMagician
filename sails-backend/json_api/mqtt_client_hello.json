@@ -1,0 +1,11 @@
+// register new client, hello from client when logging in  --> mqtt: #unitAddress/config
+
+{
+  "unitAddress":"...",
+  "units":[
+    {
+      "portAddress":"...",
+      "valueType":"" // bool, scala
+    }
+  ]
+}

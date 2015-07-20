@@ -3,7 +3,7 @@
     angular
         .module('ioMagicianCore')
         .controller('UnitDetailController', [
-            'controlableUnitService', 'ControlableUnit', '$socket', '$routeParams', '$mdBottomSheet', '$log', '$q', '$mdDialog',
+            'controlableUnitService', 'ControlableUnit', 'Port', '$socket', '$routeParams', '$mdBottomSheet', '$log', '$q', '$mdDialog',
             UnitDetailController
         ]);
 
@@ -14,17 +14,30 @@
      * @param avatarsService
      * @constructor
      */
-    function UnitDetailController(controlableUnitService, ControlableUnit, $socket, $routeParams, $mdBottomSheet, $log, $q, $mdDialog) {
+    function UnitDetailController(controlableUnitService, ControlableUnit, Port, $socket, $routeParams, $mdBottomSheet, $log, $q, $mdDialog) {
 
         var self = this;
         var unitId = $routeParams.unitId;
         self.unit = angular.copy(controlableUnitService.getPropertyObject().lastSelectedUnit);
-        $log.debug("init UnitDetailController: " + self.unit.name)
+        $log.debug("init UnitDetailController: " + self.unit.name);
 
         $socket.on('controlableunit', function (data) {
-            $log.debug("socket connected UnitDetailController: " + data)
+            $log.debug("socket connected UnitDetailController: " + data);
             self.unit = data.data;
         });
+
+        self.changePortState = function (port) {
+            $log.debug("port value change for " + port.name + " - " + port.portAddress + " to " + port.value + " requested.");
+            Port.update(port.id, port, function (response) {
+                //success function
+                controlableUnitService.changePortValue(port, function () {
+                    $log.debug("port change executed! ");
+                });
+            }, function (response) {
+                //error function
+                $log.debug("err ");
+            });
+        };
 
         self.showEditUnitDialog = function (ev) {
             $mdDialog.show({

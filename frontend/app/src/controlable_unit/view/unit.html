@@ -60,8 +60,12 @@
                     </md-list-item>
                     <md-list-item>
                         <ng-md-icon icon="data"></ng-md-icon>
-                        <p> Status (Editable) </p>
-                        <md-switch class="md-secondary" ng-model="port.value"></md-switch>
+                        <p> Status (Editable)</p>
+                        <md-switch class="md-secondary"
+                                   ng-model="port.value"
+                                   ng-change="controller.changePortState(port)"
+                                   ng-true-value="'true'"
+                                   ng-false-value="'false'"></md-switch>
                     </md-list-item>
                     <md-divider></md-divider>
                 </div>

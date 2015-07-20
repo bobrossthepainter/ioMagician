@@ -1,0 +1,9 @@
+// status update request --> mqtt: #unitAddress/#portAddress
+
+{
+  "value": "...",
+  "period": {
+    "valueAfter":"...",
+    "time": "" // INTEGER, optional = time in millis before valueAfter is set
+  }
+}

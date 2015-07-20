@@ -31,5 +31,35 @@ module.exports = {
 
   },
 
+  execute: function (req, res) {
+    console.info('Incoming request:\n\t' + req.body);
+
+    var id = req.params.id;
+
+    Port.findOne(id).populate('controlableUnit').exec(function (err, foundPort) {
+      if (err) return res.badRequest(err);
+
+      if (!foundPort) {
+        return res.notFound();
+      }
+      console.info(foundPort.toJSON());
+
+
+      PortService.execute(foundPort, function (err, status) {
+        if (err) return res.badRequest(err);
+
+        if (!status) {
+          return res.notFound();
+        }
+
+        res.ok();
+      });
+
+
+    });
+  }
+
+
+
 };
 

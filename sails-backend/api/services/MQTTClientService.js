@@ -47,6 +47,10 @@ function saveConfig(config) {
       newUnit['address'] = config.unitAddress;
       newUnit['name'] = config.unitAddress;
       var ports = [];
+      if (!config.ports){
+        console.log("No ports found for unit " + config.unitAddress);
+        return;
+      }
       config.ports.forEach(function (port) {
         ports.push({name : port.portAddress, portAddress : port.portAddress})
       });

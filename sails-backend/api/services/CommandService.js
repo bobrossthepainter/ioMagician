@@ -24,9 +24,11 @@ var CommandService = {
 
           var topic = controlableUnit.address + foundCommand.port.portAddress;
           var payload = {
-            valueStart: foundCommand.valueStart,
-            valueEnd: foundCommand.valueEnd,
-            time: foundCommand.time
+            value: foundCommand.valueStart,
+            period: {
+              valueAfter: foundCommand.valueEnd,
+              time: foundCommand.time
+            }
           };
 
           return MQTTBrokerService.publish(topic, payload, cb);
