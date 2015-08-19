@@ -1,0 +1,72 @@
+<md-dialog aria-label="Edit Controller">
+    <form name="unitForm">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Edit Controller {{vm.unit.name}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()" aria-label="edit">
+                    <ng-md-icon icon="close"></ng-md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div layout="column">
+                <md-input-container>
+                    <label>ID</label>
+                    <input ng-model="vm.unit.id" disabled>
+                </md-input-container>
+                <md-input-container>
+                    <label>Name</label>
+                    <input required name="unit-name" ng-model="vm.unit.name">
+
+                    <div ng-messages="unitForm.unit-name.$error">
+                        <div ng-if="unitForm.unit-name.$error" ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Description</label>
+                    <input ng-model="vm.unit.description">
+                </md-input-container>
+                <md-input-container>
+                    <label>Address</label>
+                    <input name="address" ng-model="vm.unit.address" disabled>
+                </md-input-container>
+
+                <!--<md-subheader ng-if="vm.unit.ports.length > 0">-->
+                    <!--<h3>Ports</h3>-->
+                <!--</md-subheader>-->
+                <div layout layout="column" ng-repeat="port in vm.unit.ports">
+                    <md-input-container>
+                        <label>Name</label>
+                        <input required name="port-name-{{port.id}}" ng-model="port.name">
+
+                        <div ng-messages="unitForm.port-name-{{port.id}}.$error">
+                            <div ng-if="unitForm.port-name.$error" ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Description</label>
+                        <input name="port-description-{{port.id}}" ng-model="port.description">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Address</label>
+                        <input name="port-address-{{port.id}}" ng-model="port.portAddress" disabled>
+                    </md-input-container>
+                </div>
+
+            </div>
+            <div class="md-actions" layout="row">
+                <!--<md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" hide show-md>-->
+                <!--More on Wikipedia-->
+                <!--</md-button>-->
+                <!--<span flex></span>-->
+                <md-button ng-disabled="unitForm.$invalid" ng-click="vm.save()" class="md-primary">
+                    Save
+                </md-button>
+                <md-button ng-click="vm.cancel()" class="md-primary">
+                    Cancel
+                </md-button>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>

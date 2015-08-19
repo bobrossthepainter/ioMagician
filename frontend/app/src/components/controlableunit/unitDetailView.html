@@ -1,0 +1,75 @@
+<div layout="column" layout-fill>
+    <md-whiteframe class="md-whiteframe-z1 md-whiteframe" >
+        <md-content layout-fill>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>
+                        <span>{{ vm.unit.name }}</span>
+                    </h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" aria-label="More"
+                               ng-click="vm.showEditUnitDialog($event)">
+                        <!--<i class="material-icons">edit</i>-->
+                        <!--<md-icon md-font-icon="search"></md-icon>-->
+                        <ng-md-icon icon="edit"></ng-md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <!--<md-content style="height: 200px;">-->
+
+            <md-list>
+                <md-subheader class="md-no-sticky">Unit-Details</md-subheader>
+                <md-divider></md-divider>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3> ID </h3>
+
+                        <p> {{ vm.unit.id }} </p>
+                    </div>
+                </md-list-item>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3> Name </h3>
+
+                        <p> {{ vm.unit.name }} </p>
+                    </div>
+                </md-list-item>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3> Description </h3>
+
+                        <p> {{ vm.unit.description }} </p>
+                    </div>
+                </md-list-item>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text">
+                        <h3> Address </h3>
+
+                        <p> {{ vm.unit.address }} </p>
+                    </div>
+                </md-list-item>
+                <md-divider ng-if="vm.unit.ports.length > 0"></md-divider>
+                <div ng-repeat="port in vm.unit.ports">
+                <md-subheader class="md-no-sticky">Port {{port.name}}</md-subheader>
+                    <md-list-item class="md-2-line">
+                        <div class="md-list-item-text" ng-class="{'md-offset': 1 }">
+                            <h3>Beschreibung</h3>
+
+                            <p> {{ port.description }} </p>
+                        </div>
+                    </md-list-item>
+                    <md-list-item>
+                        <ng-md-icon icon="data"></ng-md-icon>
+                        <p> Status (Editable)</p>
+                        <md-switch class="md-secondary"
+                                   ng-model="port.value"
+                                   ng-change="vm.changePortState(port)"
+                                   ng-true-value="'true'"
+                                   ng-false-value="'false'"></md-switch>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </div>
+            </md-list>
+        </md-content>
+    </md-whiteframe>
+</div>
