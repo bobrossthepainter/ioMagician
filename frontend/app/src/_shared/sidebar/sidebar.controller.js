@@ -16,11 +16,11 @@
         vm.selected = null;
         vm.items = [{
             "name": "Aktionen",
-            "target": "execution",
+            "target": "execution({ partyID: id, partyLocation: location })",
             "avatar" : "svg-2"
         }, {
             "name": "Controlable Units",
-            "target": "unit.list",
+            "target": "unit",
             "avatar" : "svg-1"
         }];
 

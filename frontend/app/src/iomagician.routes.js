@@ -15,32 +15,32 @@
 //
 //});
 
-(function () {
-    'use strict';
-
-    angular
-        .module('ioMagician')
-        .config(routes);
-
-    function routes($routeProvider){
-
-            $routeProvider.
-                when('/controlableunits', {
-                    templateUrl: 'src/components/controlableunit/unitListView.html',
-                    controller: 'UnitListController',
-                    controllerAs: 'vm'
-                }).
-                when('/controlableunits/:unitId', {
-                    templateUrl: 'src/components/controlableunit/unitDetailView.html',
-                    controller: 'UnitDetailController',
-                    controllerAs: 'vm'
-                }).
-                when('/execution2', {
-                    templateUrl: 'src/components/execution/executionMainView.html'
-                }).
-                otherwise({
-                    redirectTo: '/controlableunits'
-                });
-        };
-
-})();
+//(function () {
+//    'use strict';
+//
+//    angular
+//        .module('ioMagician')
+//        .config(routes);
+//
+//    function routes($routeProvider){
+//
+//            $routeProvider.
+//                when('/controlableunits', {
+//                    templateUrl: 'src/components/controlableunit/unitListView.html',
+//                    controller: 'UnitListController',
+//                    controllerAs: 'vm'
+//                }).
+//                when('/controlableunits/:unitId', {
+//                    templateUrl: 'src/components/controlableunit/unitDetailView.html',
+//                    controller: 'UnitDetailController',
+//                    controllerAs: 'vm'
+//                }).
+//                when('/execution2', {
+//                    templateUrl: 'src/components/execution/executionMainView.html'
+//                }).
+//                otherwise({
+//                    redirectTo: '/controlableunits'
+//                });
+//        };
+//
+//})();

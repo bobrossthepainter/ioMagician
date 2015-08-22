@@ -17,9 +17,11 @@
                 config: {
                     abstract: false,
                     templateUrl: 'src/components/execution/executionMainView.html',
-                    url: '/execution',
-                    //controller: 'UnitListController',
-                    //controllerAs: 'vm'
+                    url: '/execution/:partyLocation',
+                    //controller: 'ExecutionMainController',
+                    controller: function ($stateParams) {
+                        console.log(JSON.stringify($stateParams));
+                    }
                 }
             }
         ];

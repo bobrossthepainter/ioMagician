@@ -5,9 +5,9 @@
         .module('ioMagician.unit')
         .controller('UnitListController', UnitListController);
 
-    UnitListController.$inject = ['unitService', 'controlableUnitService', '$log', '$location'];
+    UnitListController.$inject = ['unitService', 'controlableUnitService', '$log', '$state', '$stateParams'];
 
-    function UnitListController(unitService, controlableUnitService, $log, $location) {
+    function UnitListController(unitService, controlableUnitService, $log, $state, $stateParams) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -25,11 +25,15 @@
             controlableUnitService.query(function (data) {
                 vm.units = data;
             });
+            $log.debug("activate UnitListController done");
+            $log.debug("stateParams " + JSON.stringify($stateParams) + $stateParams.partyLocation);
+            $log.debug("state params: " + JSON.stringify($state.params));
         }
 
         function goTo(unit) {
             unitService.getPropertyObject().lastSelectedUnit = unit;
-            $location.path('/controlableunits/' + unit.id);
+            //$location.path('/controlableunits/' + unit.id);
+            $state.go('unit.detail', { unitId: unit.id, unit: unit });
         };
 
     };

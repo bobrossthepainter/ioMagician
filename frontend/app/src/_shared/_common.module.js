@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('ioMagician.common', ['ngMdIcons', 'ui.router', 'socket.io'])
+    angular.module('ioMagician.common', ['ngMdIcons', 'ui.router', 'socket.io', 'sidebar'])
         .service('configurationService', ['$http', configurationService])
         .constant('config', {
             'backend': 'http://localhost:1337',

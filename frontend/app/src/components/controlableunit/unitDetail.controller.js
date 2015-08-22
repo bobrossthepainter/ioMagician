@@ -5,13 +5,13 @@
         .module('ioMagician.unit')
         .controller('UnitDetailController', UnitDetailController);
 
-    UnitDetailController.$inject = ['unitService', 'controlableUnitService', 'portService', '$socket', '$routeParams', '$mdBottomSheet', '$log', '$q', '$mdDialog'];
+    UnitDetailController.$inject = ['unitService', 'controlableUnitService', 'portService', '$socket', '$mdBottomSheet', '$log', '$q', '$mdDialog', '$stateParams', '$state'];
 
 
-    function UnitDetailController(unitService, controlableUnitService, portService, $socket, $routeParams, $mdBottomSheet, $log, $q, $mdDialog) {
+    function UnitDetailController(unitService, controlableUnitService, portService, $socket, $mdBottomSheet, $log, $q, $mdDialog, $stateParams, $state) {
         /* jshint validthis: true */
         var vm = this;
-        var unitId = $routeParams.unitId;
+        var unitId = $stateParams.unitId;
 
         vm.unit = angular.copy(unitService.getPropertyObject().lastSelectedUnit);
         vm.changePortState = changePortState;
@@ -24,12 +24,21 @@
 
 
         function activate() {
+            if (!vm.unit){
+                controlableUnitService.get({id:unitId}, function(controlableUnit) {
+                    $log.debug("received unit for unitId " + unitId + ": " +JSON.stringify(controlableUnit));
+                    vm.unit = controlableUnit;
+                });
+            }
             $socket.on('controlableunit', function (data) {
                 $log.debug("socket connected UnitDetailController: " + data);
                 vm.unit = data.data;
             });
 
-            $log.debug("init UnitDetailController: " + vm.unit.name);
+            $log.debug("activate UnitDetailController for unit: " + unitId + " done.");
+            //$log.debug("unit id: " + unitId);
+            $log.debug("stateDotparams: " + JSON.stringify($state.params));
+            $log.debug("stateParams: " + JSON.stringify($stateParams));
         }
 
 

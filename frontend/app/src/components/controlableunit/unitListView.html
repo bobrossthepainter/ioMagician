@@ -1,20 +1,24 @@
-<md-content flex id="content">
-    <div layout="row">
-        <div>Available Controllers</div>
-        <div>Btn</div>
-    </div>
-    <md-list>
-        <md-list-item class="md-2-line" ng-repeat="unit in vm.units" ui-sref="" ng-click="vm.go(unit)">
-            <!--<link href="{{unit.id}}">-->
-            <img ng-src="{{unit | unitIcon}}" class="md-avatar">
-            <div class="md-list-item-text" >
-                <h3>{{ unit.name }}</h3>
-                <p>{{ unit.description }}</p>
-            </div>
-            <!--</link>-->
-            <!--<a href="#/controller/{{unit.id}}" class="thumb"><img ng-src="{{unit | controlableUnitIcon}}"></a>-->
-            <!--<a href="#/controller/{{unit.id}}">{{unit.name}}</a>-->
-            <!--<p>{{unit.description}}</p>-->
-        </md-list-item>
-    </md-list>
-</md-content>
+<ui-view class="shuffle-animation">
+    <md-content flex id="content">
+        <div layout="row">
+            <div>Available Controllers</div>
+            <div>Btn</div>
+        </div>
+        <md-list>
+            <md-list-item class="md-2-line" ng-repeat="unit in vm.units" ng-click="vm.go(unit)">
+                <!--<link href="{{unit.id}}">-->
+                <img ng-src="{{unit | unitIcon}}" class="md-avatar">
+
+                <div class="md-list-item-text">
+                    <h3>{{ unit.name }}</h3>
+
+                    <p>{{ unit.description }}</p>
+                </div>
+                <!--</link>-->
+                <!--<a href="#/controller/{{unit.id}}" class="thumb"><img ng-src="{{unit | controlableUnitIcon}}"></a>-->
+                <!--<a href="#/controller/{{unit.id}}">{{unit.name}}</a>-->
+                <!--<p>{{unit.description}}</p>-->
+            </md-list-item>
+        </md-list>
+    </md-content>
+</ui-view>

@@ -19,6 +19,6 @@
     'use strict';
 
     angular
-        .module('ioMagician', ['ngRoute', 'ngMaterial', 'ioMagician.unit', 'ioMagician.execution', 'sidebar']);
+        .module('ioMagician', ['ngRoute', 'ngMaterial', 'ioMagician.unit', 'ioMagician.execution']);
 
 })();

@@ -20,47 +20,57 @@
 <body layout="row" ng-app="ioMagician">
 
 
-<ui-view class="ng-scope">
-    <div ng-controller="SidebarController as sb" layout="vertical">
+<!--<ui-view class="ng-scope">-->
+<div ng-controller="SidebarController as sb" layout="vertical">
 
-        <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
-                    md-component-id="left"
-                    md-is-locked-open="$mdMedia('gt-sm')">
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')">
 
-            <md-toolbar class="md-whiteframe-z1">
-                <h1>{{sb.title}}</h1>
-            </md-toolbar>
+        <md-toolbar class="md-whiteframe-z1">
+            <h1>{{sb.title}}</h1>
+        </md-toolbar>
 
-            <md-list>
-                <md-list-item ng-repeat="it in sb.items">
-                    <md-button ui-sref="" href="#/{{it.target}}" ng-click="sb.selectItem(it)"
-                               ng-class="{'selected' : it === sb.selected }">
-                        <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-                        {{it.name}}
-                    </md-button>
-                </md-list-item>
-            </md-list>
+        <md-list>
+            <md-list-item ng-repeat="it in sb.items">
+                <md-button ui-sref="{{it.target}}"
+                           ui-sref-active='selected'>
+                    <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
+                    {{it.name}}
+                </md-button>
+            </md-list-item>
+        </md-list>
 
-        </md-sidenav>
+    </md-sidenav>
 
-    </div>
-</ui-view>
+</div>
+<!--</ui-view>//-->
 
-<!--<div ng-view></div>-->
-
-<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2 layout-max-width">
-
+<div  flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2 layout-max-width">
     <md-toolbar layout="row" class="md-whiteframe-z1" ng-controller="SidebarController as sc">
         <md-button class="menu" hide-gt-sm ng-click="sc.toggleList()" aria-label="Show User List">
             <md-icon md-svg-icon="menu"></md-icon>
         </md-button>
         <h1>{{sc.title}}</h1>
     </md-toolbar>
-
-    <div ng-view></div>
-
-
+    <div ui-view>
+    </div>
 </div>
+
+
+<!--<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2 layout-max-width">-->
+
+<!--<md-toolbar layout="row" class="md-whiteframe-z1" ng-controller="SidebarController as sc">-->
+<!--<md-button class="menu" hide-gt-sm ng-click="sc.toggleList()" aria-label="Show User List">-->
+<!--<md-icon md-svg-icon="menu"></md-icon>-->
+<!--</md-button>-->
+<!--<h1>{{sc.title}}</h1>-->
+<!--</md-toolbar>-->
+
+<!--<div ng-view></div>-->
+
+
+<!--</div>-->
 
 
 
