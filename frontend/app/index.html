@@ -27,6 +27,14 @@
                 md-component-id="left"
                 md-is-locked-open="$mdMedia('gt-sm')">
 
+        <header class="nav-header">
+            <a ng-href="#/" class="docs-logo">
+                <img src="assets/svg/html5.svg" alt="" width="50px"/>
+
+                <h1 class="docs-logotype md-heading">Angular Material</h1>
+            </a>
+        </header>
+
         <md-toolbar class="md-whiteframe-z1">
             <h1>{{sb.title}}</h1>
         </md-toolbar>
@@ -46,12 +54,13 @@
 </div>
 <!--</ui-view>//-->
 
-<div  flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2 layout-max-width">
-    <md-toolbar layout="row" class="md-whiteframe-z1" ng-controller="SidebarController as sc">
-        <md-button class="menu" hide-gt-sm ng-click="sc.toggleList()" aria-label="Show User List">
-            <md-icon md-svg-icon="menu"></md-icon>
-        </md-button>
-        <h1>{{sc.title}}</h1>
+<div flex layout="column" tabIndex="-1" role="main">
+    <md-toolbar layout="row" class="md-whiteframe-glow-z1 site-content-toolbar" ng-controller="SidebarController as sc">
+        <div class="md-toolbar-tools docs-toolbar-tools" ng-click="openMenu()" tabIndex="-1">
+            <md-button class="menu" hide-gt-sm ng-click="sc.toggleList()" aria-label="Show User List">
+                <md-icon md-svg-icon="menu"></md-icon>
+            </md-button>
+        </div>
     </md-toolbar>
     <div ui-view>
     </div>
@@ -87,16 +96,19 @@
 <script src="src/_ioMagician.module.js"></script>
 <script src="src/_shared/_common.module.js"></script>
 <script src="src/_shared/angular-material-icons.js"></script>
+<script src="src/_shared/directives/iomAction.directive.js"></script>
 <script src="src/_shared/routerHelperProvider.js"></script>
 <script src="src/_shared/service/_service.module.js"></script>
 <script src="src/_shared/service/angularSocketIO.provider.js"></script>
 <script src="src/_shared/service/rest/action.service.js"></script>
+<script src="src/_shared/service/rest/command.service.js"></script>
 <script src="src/_shared/service/rest/controlableUnit.service.js"></script>
 <script src="src/_shared/service/rest/executionCommand.service.js"></script>
 <script src="src/_shared/service/rest/port.service.js"></script>
 <script src="src/_shared/service/service.config.js"></script>
 <script src="src/_shared/sidebar/_sidebar.module.js"></script>
 <script src="src/_shared/sidebar/sidebar.controller.js"></script>
+<script src="src/_shared/sidebar/sidebar.service.js"></script>
 <script src="src/components/controlableunit/_unit.module.js"></script>
 <script src="src/components/controlableunit/unit.controller.js"></script>
 <script src="src/components/controlableunit/unit.routes.js"></script>

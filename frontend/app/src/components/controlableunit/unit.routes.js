@@ -7,25 +7,16 @@
 
     /* @ngInject */
 
-    appRun.$inject = ['routerHelperProvider'];
-    function appRun(routerHelperProvider) {
+    appRun.$inject = ['routerHelperProvider', 'sidebarProvider'];
+    function appRun(routerHelperProvider, sidebarProvider) {
         routerHelperProvider.configureStates(getStates());
+        sidebarProvider.addElement("Controlable Units", "unit", "svg-1");
     }
 
     function getStates() {
         return [
             {
                 state: 'unit',
-                config: {
-                    abstract: false,
-                    templateUrl: 'src/components/controlableunit/unitListView.html',
-                    url: '/unit',
-                    controller: 'UnitListController',
-                    controllerAs: 'vm'
-                }
-            },
-            {
-                state: 'unit.list',
                 config: {
                     abstract: false,
                     templateUrl: 'src/components/controlableunit/unitListView.html',

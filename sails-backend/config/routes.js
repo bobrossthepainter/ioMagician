@@ -38,6 +38,7 @@ module.exports.routes = {
  ******************************************************************************/
 
   'GET /action/execute/:id' : 'ActionController.execute',
+  'GET /action/commands' : 'ActionController.getActionsWithCommands',
 
   'GET /port/execute/:id' : 'PortController.execute',
 

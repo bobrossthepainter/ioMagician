@@ -6,8 +6,11 @@
 
 
     /* @ngInject */
-    function appRun(routerHelperProvider) {
+
+    appRun.$inject = ['routerHelperProvider', 'sidebarProvider'];
+    function appRun(routerHelperProvider, sidebarProvider) {
         routerHelperProvider.configureStates(getStates());
+        sidebarProvider.addElement("Aktionen", "execution", "svg-2");
     }
 
     function getStates() {
@@ -18,10 +21,8 @@
                     abstract: false,
                     templateUrl: 'src/components/execution/executionMainView.html',
                     url: '/execution/:partyLocation',
-                    //controller: 'ExecutionMainController',
-                    controller: function ($stateParams) {
-                        console.log(JSON.stringify($stateParams));
-                    }
+                    controller: 'ExecutionMainController',
+                    controllerAs: 'vm'
                 }
             }
         ];

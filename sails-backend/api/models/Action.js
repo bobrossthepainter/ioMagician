@@ -25,7 +25,11 @@ module.exports = {
 
 		commandExecutions : {
 			collection : 'CommandExecution'
-		}
+		},
+
+    commands : {
+      type: 'json'
+    }
 
 	}
 };

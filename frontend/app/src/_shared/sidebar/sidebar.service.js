@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -15,28 +15,42 @@
 
         SidebarHelper.$inject = [];
         /* @ngInject */
-        function SidebarHelper($state) {
-            var hasOtherwise = false;
+        function SidebarHelper() {
+            var elementList = [];
+            var listenerList = [];
 
             var service = {
-                addElement: addElement
+                getElements: getElements,
+                addElement: addElement,
+                attachChangeListener: attachChangeListener
             };
 
             return service;
 
             ///////////////
 
-            function addElement(name, target, avatar) {
-                states.forEach(function(state) {
-                    $stateProvider.state(state.state, state.config);
-                });
-                if (otherwisePath && !hasOtherwise) {
-                    hasOtherwise = true;
-                    $urlRouterProvider.otherwise(otherwisePath);
-                }
+            function getElements() {
+                return elementList;
             }
 
-            function getStates() { return $state.get(); }
+            function addElement(name, target, avatar) {
+
+                elementList.push(
+                    {
+                        name: name,
+                        target: target,
+                        avatar: avatar,
+                    }
+                );
+
+                listenerList.forEach(function (listener) {
+                    listener();
+                });
+            }
+
+            function attachChangeListener(listener) {
+                listenerList.push(listener);
+            }
         }
     }
 

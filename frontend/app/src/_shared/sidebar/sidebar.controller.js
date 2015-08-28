@@ -5,24 +5,16 @@
         .module('sidebar')
         .controller('SidebarController', SidebarController);
 
-    SidebarController.$inject = ['$mdSidenav', '$mdBottomSheet', '$log', '$q', '$location'];
 
+    SidebarController.$inject = ['$mdSidenav', '$mdBottomSheet', 'sidebarProvider', '$log', '$q', '$location'];
 
-    function SidebarController($mdSidenav, $mdBottomSheet, $log, $q, $location) {
+    function SidebarController($mdSidenav, $mdBottomSheet, sidebarProvider, $log, $q, $location) {
         /* jshint validthis: true */
         var vm = this;
 
         vm.title = "Navi";
         vm.selected = null;
-        vm.items = [{
-            "name": "Aktionen",
-            "target": "execution({ partyID: id, partyLocation: location })",
-            "avatar" : "svg-2"
-        }, {
-            "name": "Controlable Units",
-            "target": "unit",
-            "avatar" : "svg-1"
-        }];
+        vm.items = sidebarProvider.getElements();
 
         vm.selectItem = selectItem;
         vm.toggleList = toggleItemList;
@@ -35,13 +27,17 @@
 
 
         function activate(){
-
+            sidebarProvider.attachChangeListener(sidebarListener);
         }
 
 
         // *********************************
         // Internal methods
         // *********************************
+
+        function sidebarListener() {
+            vm.items = sidebarProvider.getElements();
+        }
 
         /**
          * First hide the bottomsheet IF visible, then

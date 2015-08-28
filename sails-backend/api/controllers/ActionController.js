@@ -33,6 +33,18 @@ module.exports = {
 
 
     });
+  },
+
+  getActionsWithCommands: function (req, res) {
+    console.info('getActionsWithCommands called');
+
+    Action.find({}).populate('commandExecutions').exec(function findCB(err, found) {
+      if (err) {
+        return res.badRequest(err);
+      }
+      res.body = found;
+      res.ok();
+    });
   }
 
 };
